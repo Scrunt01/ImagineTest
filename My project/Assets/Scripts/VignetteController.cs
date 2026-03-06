@@ -6,15 +6,15 @@ using UnityEngine.Rendering.Universal;
 
 public interface IEffectable
 {
-    void StartEffect();
+    void StartEffect(float delay);
     void EndEffect();
-    bool HasEffectEnded();
+
 }
 
 public class VignetteController : MonoBehaviour, IEffectable
 {
-    [SerializeField] private float lengthOfEffect;
-    [SerializeField] private float returnToNormalLength;
+    [SerializeField] private float growSpeed;
+    [SerializeField] private float fadeSpeed;
 
     [SerializeField] private AudioClip effectWarning;
 
@@ -22,17 +22,21 @@ public class VignetteController : MonoBehaviour, IEffectable
     private Volume volume;
     private Vignette vignette;
 
-    private bool isEffectActive = false;
-    private bool isReturningToNormal = false;
-
-    private float timeElapsed;
-
     private float effectProgressWhenEnded;
+    private float startDelay;
+
+
+    public enum EffectState
+    {
+        NotActive = 0,
+        Growing = 1,
+        Ending = 2
+    }
+
+    private EffectState state;
 
     private void Awake()
     {
-
-
         volume = GetComponent<Volume>();
 
         if (!volume.profile.TryGet(out vignette))
@@ -41,48 +45,56 @@ public class VignetteController : MonoBehaviour, IEffectable
             return;
         }
 
+        state = EffectState.NotActive;
     }
 
-    public void StartEffect()
+    public void StartEffect(float delay)
     {
-        isReturningToNormal = false;
-
-        timeElapsed = 0;
-        isEffectActive = true;
+        
+        startDelay = delay;
+        StartCoroutine(WaitUntilEffectStart(delay));
     }
+
+    private IEnumerator WaitUntilEffectStart(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        state = EffectState.Growing;
+    }
+
 
     private void Update()
     {
-        if (isEffectActive && timeElapsed < lengthOfEffect)
+        if (state == EffectState.Growing)
         {
-            vignette.intensity.value = Mathf.Lerp(0, 1, timeElapsed / lengthOfEffect);
-            timeElapsed += Time.deltaTime;
+            float oldIntestity = vignette.intensity.value;
 
-            if (timeElapsed > lengthOfEffect / 2 && timeElapsed < lengthOfEffect / 2 - 1 &&  !AudioManager.Instance.isClipPlaying(effectWarning))
+            vignette.intensity.value = Mathf.MoveTowards(vignette.intensity.value, 1, growSpeed * Time.deltaTime);
+            Debug.Log(vignette.intensity.value);
+
+            if (vignette.intensity.value > 0.5f  && oldIntestity < 0.5f)
             {
                 AudioManager.Instance.PlayClip(effectWarning);
             }
         }
 
-        if (isReturningToNormal && timeElapsed < returnToNormalLength)
+        if (state == EffectState.Ending)
         {
-            vignette.intensity.value = Mathf.Lerp(effectProgressWhenEnded, 0, timeElapsed / returnToNormalLength);
-            timeElapsed += Time.deltaTime;
+            vignette.intensity.value = Mathf.MoveTowards(vignette.intensity.value, 0, fadeSpeed * Time.deltaTime);
+
+            if (vignette.intensity.value == 0)
+            {
+                state = EffectState.NotActive;
+                StartEffect(startDelay);
+            }
         }
+
     }
 
     public void EndEffect()
     {
-        isEffectActive = false;
+        state = EffectState.Ending;
         effectProgressWhenEnded = vignette.intensity.value;
-
-        timeElapsed = 0;
-        isReturningToNormal = true;
-    }
-
-    public bool HasEffectEnded()
-    {
-        return !(isEffectActive || isReturningToNormal);
     }
 
 }

@@ -283,9 +283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f61a3e850de14a4d964bf3330e99ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lengthOfEffect: 20
-  returnToNormalLength: 2
-  effectWarningSource: {fileID: 1263015965}
+  growSpeed: 0.02
+  fadeSpeed: 1
   effectWarning: {fileID: 8300000, guid: cfaad111ecfcbbe4895d959d2dc36772, type: 3}
 --- !u!1 &21809974
 GameObject:
@@ -18250,7 +18249,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: cfaad111ecfcbbe4895d959d2dc36772, type: 3}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.273
   m_Pitch: 1

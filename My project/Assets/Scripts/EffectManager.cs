@@ -19,16 +19,11 @@ public class EffectManager : MonoBehaviour
     {
         effect0 = GetComponentInChildren<IEffectable>();
     }
-    private IEnumerator WaitUntilEffectStart()
-    {
-        yield return new WaitForSeconds(timeUntilEffectStart);
-        StartEffect(effect0);
-    }
-
+   
 
     private void StartEffect(IEffectable effect)
     {
-        effect.StartEffect();
+        effect.StartEffect(timeUntilEffectStart);
         isEffect0Active = true;
         Debug.Log("Start effect 0");
     }
@@ -36,7 +31,7 @@ public class EffectManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(WaitUntilEffectStart());
+        StartEffect(effect0);
     }
 
     // Update is called once per frame
@@ -48,14 +43,9 @@ public class EffectManager : MonoBehaviour
             
             if (distanceToRemedy < 5)
             {
-                isEffect0Active = false;
                 effect0.EndEffect();
                 Debug.Log("End the effect 0");
             }
-                
-        } else if (effect0.HasEffectEnded())
-        {
-            StartEffect(effect0);
-        }
+        } 
     }
 }
