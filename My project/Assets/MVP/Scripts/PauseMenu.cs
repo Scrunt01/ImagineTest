@@ -5,10 +5,6 @@ public class PauseMenu : MonoBehaviour
 {
     // Dit script zit op de pauseMenu parent
 
-    private void Start()
-    {
-    }
-
     public void LoadMainMenu()
     {
         Debug.Log("Try to load main menu");
