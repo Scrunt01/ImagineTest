@@ -284,7 +284,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growSpeed: 0.02
-  fadeSpeed: 1
+  fadeSpeed: 0.3
+  remedy: {fileID: 166839016}
+  player: {fileID: 814226607}
   effectWarning: {fileID: 8300000, guid: cfaad111ecfcbbe4895d959d2dc36772, type: 3}
 --- !u!1 &21809974
 GameObject:
@@ -424,10 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54cb8b97955e40b42b16480258c0fa91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 814226607}
-  isEffect0Active: 0
   timeUntilEffectStart: 5
-  effect0Remedy: {fileID: 166839016}
 --- !u!4 &136109242
 Transform:
   m_ObjectHideFlags: 0

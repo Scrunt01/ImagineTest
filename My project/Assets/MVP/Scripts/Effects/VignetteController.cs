@@ -3,21 +3,20 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-
-public interface IEffectable
-{
-    void StartEffect(float delay);
-    void EndEffect();
-
-}
-
 public class VignetteController : MonoBehaviour, IEffectable
 {
     [SerializeField] private float growSpeed;
     [SerializeField] private float fadeSpeed;
 
+    [SerializeField] private GameObject remedy;
+    [SerializeField] private GameObject player;
+
     [SerializeField] private AudioClip effectWarning;
 
+
+
+    public bool isActive { get; set; } = false;
+    public bool isRemedied { get; set; } = false;
 
     private Volume volume;
     private Vignette vignette;
@@ -50,7 +49,8 @@ public class VignetteController : MonoBehaviour, IEffectable
 
     public void StartEffect(float delay)
     {
-        
+        isActive = true;
+        isRemedied = false;
         startDelay = delay;
         StartCoroutine(WaitUntilEffectStart(delay));
     }
@@ -89,10 +89,18 @@ public class VignetteController : MonoBehaviour, IEffectable
             }
         }
 
+        float distanceToRemedy = Vector3.Distance(player.transform.position, remedy.transform.position);
+
+        if (distanceToRemedy < 5)
+        {
+            isRemedied = true;
+        }
+
     }
 
     public void EndEffect()
     {
+        isActive = false;
         state = EffectState.Ending;
         effectProgressWhenEnded = vignette.intensity.value;
     }
