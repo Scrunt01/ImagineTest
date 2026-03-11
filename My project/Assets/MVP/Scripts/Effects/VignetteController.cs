@@ -7,6 +7,7 @@ public class VignetteController : MonoBehaviour, IEffectable
 {
     [SerializeField] private float growSpeed;
     [SerializeField] private float fadeSpeed;
+    [SerializeField] private float startDelay;
 
     [SerializeField] private GameObject remedy;
     [SerializeField] private GameObject player;
@@ -14,15 +15,12 @@ public class VignetteController : MonoBehaviour, IEffectable
     [SerializeField] private AudioClip effectWarning;
 
 
-
+    public string effectName { get; private set; } = "Vignette";
     public bool isActive { get; set; } = false;
     public bool isRemedied { get; set; } = false;
 
     private Volume volume;
     private Vignette vignette;
-
-    private float effectProgressWhenEnded;
-    private float startDelay;
 
 
     public enum EffectState
@@ -47,12 +45,11 @@ public class VignetteController : MonoBehaviour, IEffectable
         state = EffectState.NotActive;
     }
 
-    public void StartEffect(float delay)
+    public void StartEffect()
     {
         isActive = true;
         isRemedied = false;
-        startDelay = delay;
-        StartCoroutine(WaitUntilEffectStart(delay));
+        StartCoroutine(WaitUntilEffectStart(startDelay));
     }
 
     private IEnumerator WaitUntilEffectStart(float delay)
@@ -85,7 +82,7 @@ public class VignetteController : MonoBehaviour, IEffectable
             if (vignette.intensity.value == 0)
             {
                 state = EffectState.NotActive;
-                StartEffect(startDelay);
+                StartEffect();
             }
         }
 
@@ -102,7 +99,6 @@ public class VignetteController : MonoBehaviour, IEffectable
     {
         isActive = false;
         state = EffectState.Ending;
-        effectProgressWhenEnded = vignette.intensity.value;
     }
 
 }

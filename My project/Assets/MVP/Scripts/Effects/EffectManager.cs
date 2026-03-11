@@ -5,10 +5,12 @@ using UnityEngine;
 
 public interface IEffectable
 {
-    void StartEffect(float delay);
+    void StartEffect();
     void EndEffect();
     bool isActive { get; }
     bool isRemedied { get; }
+
+    string effectName { get; }
 
 }
 
@@ -17,9 +19,7 @@ public interface IEffectable
 
 public class EffectManager : MonoBehaviour
 {
-    [SerializeField] private float timeUntilEffectStart;
-
-    [SerializeField] private IEffectable[] statusEffects;
+    private IEffectable[] statusEffects;
     private IEffectable currentEffect;
 
     private void Awake()
@@ -31,23 +31,43 @@ public class EffectManager : MonoBehaviour
     {
         currentEffect = effect;
 
-        effect.StartEffect(timeUntilEffectStart);
+        effect.StartEffect();
 
-        Debug.Log("Start effect");
+        Debug.Log("Start effect " + effect.effectName);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void StartEffect(string effectName)
     {
-        StartEffect(statusEffects[0]);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (currentEffect.isActive && currentEffect.isRemedied)
+        foreach (var effect in statusEffects)
         {
-            currentEffect.EndEffect();
-        } 
+            if (effectName == effect.effectName)
+            {
+                currentEffect = effect;
+
+                effect.StartEffect();
+
+                Debug.Log("Start effect " + effect.effectName);
+            }
+            else
+            {
+                Debug.LogError("The effect you tried to call, does not exist! Please check the names of the effects");
+            }
+        }
+
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
+        {
+            // Start the 
+            StartEffect(statusEffects[0]);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (currentEffect.isActive && currentEffect.isRemedied)
+            {
+                currentEffect.EndEffect();
+            }
+        }
     }
 }
