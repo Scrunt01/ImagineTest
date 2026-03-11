@@ -408,6 +408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 136109242}
   - component: {fileID: 136109241}
+  - component: {fileID: 136109243}
   m_Layer: 0
   m_Name: EffectManager
   m_TagString: Untagged
@@ -444,6 +445,18 @@ Transform:
   - {fileID: 767015393}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &136109243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136109240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6612c16c1cc8b6744aaa71101cd4d355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &147020533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -566,6 +579,10 @@ PrefabInstance:
     - target: {fileID: 4459864850019384738, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: walkSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_Name
@@ -11243,6 +11260,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9b9accac7d847141ae7a8d75aa52e34, type: 3}
+--- !u!114 &606432550 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4459864850019384740, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+  m_PrefabInstance: {fileID: 247146282}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d90ba6530d9bfda47abb4610956b2f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &617648118
 GameObject:
   m_ObjectHideFlags: 0
@@ -11864,6 +11892,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 767015393}
+  - component: {fileID: 767015394}
   m_Layer: 0
   m_Name: Slowness
   m_TagString: Untagged
@@ -11886,6 +11915,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 136109242}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &767015394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767015392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b787673594929434b8c8096625fd1e1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 606432550}
+  newWalkSpeed: 2
+  recoverySpeed: 0.1
 --- !u!1 &777021877
 GameObject:
   m_ObjectHideFlags: 0

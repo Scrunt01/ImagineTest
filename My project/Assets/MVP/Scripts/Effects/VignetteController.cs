@@ -57,6 +57,7 @@ public class VignetteController : MonoBehaviour, IEffectable
         yield return new WaitForSeconds(delay);
 
         state = EffectState.Growing;
+        Debug.Log("The vignette is growing");
     }
 
 
@@ -67,7 +68,6 @@ public class VignetteController : MonoBehaviour, IEffectable
             float oldIntestity = vignette.intensity.value;
 
             vignette.intensity.value = Mathf.MoveTowards(vignette.intensity.value, 1, growSpeed * Time.deltaTime);
-            Debug.Log(vignette.intensity.value);
 
             if (vignette.intensity.value > 0.5f  && oldIntestity < 0.5f)
             {

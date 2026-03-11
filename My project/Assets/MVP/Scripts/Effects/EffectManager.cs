@@ -25,6 +25,7 @@ public class EffectManager : MonoBehaviour
     private void Awake()
     {
         statusEffects = GetComponentsInChildren<IEffectable>();
+        Debug.Log($"There have been {statusEffects.Length} effects detected");
     }
 
     private void StartEffect(IEffectable effect)
@@ -47,10 +48,6 @@ public class EffectManager : MonoBehaviour
                 effect.StartEffect();
 
                 Debug.Log("Start effect " + effect.effectName);
-            }
-            else
-            {
-                Debug.LogError("The effect you tried to call, does not exist! Please check the names of the effects");
             }
         }
 
