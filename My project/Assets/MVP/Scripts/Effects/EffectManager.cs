@@ -54,7 +54,7 @@ public class EffectManager : MonoBehaviour
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            // Start the 
+            // Start the vignette effect
             StartEffect(statusEffects[0]);
         }
 
