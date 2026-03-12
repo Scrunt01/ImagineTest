@@ -204,10 +204,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  interactionPrompt: {fileID: 0}
-  dialogueText: {fileID: 0}
-  dialogue: 
-  interactableDistance: 0
+  dialogueText: {fileID: 5363801637134899107}
+  dialogue: FUCK OFF
+  interactableDistance: 5
 --- !u!1 &8261440648134829535
 GameObject:
   m_ObjectHideFlags: 0

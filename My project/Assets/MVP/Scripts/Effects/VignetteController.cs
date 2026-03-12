@@ -9,7 +9,7 @@ public class VignetteController : MonoBehaviour, IEffectable
     [SerializeField] private float fadeSpeed;
     [SerializeField] private float startDelay;
 
-    [SerializeField] private GameObject remedy;
+    [SerializeField] private GameObject[] remedys;
     [SerializeField] private GameObject player;
 
     [SerializeField] private AudioClip effectWarning;
@@ -86,11 +86,14 @@ public class VignetteController : MonoBehaviour, IEffectable
             }
         }
 
-        float distanceToRemedy = Vector3.Distance(player.transform.position, remedy.transform.position);
-
-        if (distanceToRemedy < 5)
+        foreach (GameObject remedy in remedys)
         {
-            isRemedied = true;
+            float distanceToRemedy = Vector3.Distance(player.transform.position, remedy.transform.position);
+
+            if (distanceToRemedy < 5)
+            {
+                isRemedied = true;
+            }
         }
 
     }

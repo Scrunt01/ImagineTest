@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     // Dit script zit op de pauseMenu parent
+    [SerializeField] private FirstPersonController player;
 
     public void LoadMainMenu()
     {
@@ -27,6 +28,7 @@ public class PauseMenu : MonoBehaviour
     {
         gameObject.SetActive(true);
         Time.timeScale = 0.0f;
+        player.mouseSensitivity = 0.0f;
 
         AudioManager.Instance.PauseAllAudio();
     }
@@ -35,6 +37,7 @@ public class PauseMenu : MonoBehaviour
     {
         gameObject.SetActive(false);
         Time.timeScale = 1.0f;
+        player.mouseSensitivity = 2.0f;
 
         AudioManager.Instance.UnPauseAllAudio();
     }
