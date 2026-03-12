@@ -50,7 +50,7 @@ public class EffectManager : MonoBehaviour
                 Debug.Log("Start effect " + effect.effectName);
             }
         }
-
+    }
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -66,5 +66,5 @@ public class EffectManager : MonoBehaviour
                 currentEffect.EndEffect();
             }
         }
-    }
+    
 }

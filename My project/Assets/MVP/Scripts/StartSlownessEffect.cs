@@ -1,13 +1,23 @@
+using System.Collections;
 using UnityEngine;
 
 public class StartSlownessEffect : MonoBehaviour
 {
+    private EffectManager effectManager;
     // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        effectManager = GetComponent<EffectManager>();
+        StartCoroutine(StartSlowness());
+    }
+
+    private IEnumerator StartSlowness()
+    {
+        while (true)
         {
-            GetComponentInParent<EffectManager>().StartEffect("Slowness");
+            float randomInterval = Random.Range(5, 40);
+            yield return new WaitForSeconds(randomInterval);
+            effectManager.StartEffect("Slowness");
         }
     }
 }
