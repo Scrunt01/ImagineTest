@@ -8,7 +8,7 @@ public class StartSlownessEffect : MonoBehaviour
     private void Start()
     {
         effectManager = GetComponent<EffectManager>();
-        StartCoroutine(StartSlowness());
+        // StartCoroutine(StartSlowness());
     }
 
     private IEnumerator StartSlowness()

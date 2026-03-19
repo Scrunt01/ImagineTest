@@ -55,7 +55,7 @@ public class EffectManager : MonoBehaviour
         void Start()
         {
             // Start the vignette effect
-            StartEffect(statusEffects[0]);
+            StartEffect("Nausea");
         }
 
         // Update is called once per frame
