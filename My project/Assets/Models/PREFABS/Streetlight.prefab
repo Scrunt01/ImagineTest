@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 9214435146890513448}
   - component: {fileID: 8743837612323283129}
   - component: {fileID: 3916752765189028556}
+  - component: {fileID: 4354672211341645017}
   m_Layer: 0
-  m_Name: Cube.006
+  m_Name: Streetlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,6 +89,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4354672211341645017
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084181463022028236}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.008654176, y: 0.008654175, z: 0.08223395}
+  m_Center: {x: 0.02501126, y: -0.0000000011641534, z: 0.039665468}
 --- !u!1 &6889060062481444359
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,8 +156,8 @@ Light:
   m_Color: {r: 0.71820486, g: 0.7761317, b: 0.9009434, a: 1}
   m_Intensity: 287.91
   m_Range: 16.570093
-  m_SpotAngle: 179
-  m_InnerSpotAngle: 39.873558
+  m_SpotAngle: 147.76152
+  m_InnerSpotAngle: 76.4095
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
