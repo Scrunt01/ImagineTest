@@ -79088,7 +79088,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725037072}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -80917,6 +80917,10 @@ PrefabInstance:
       propertyPath: gravity
       value: -9.81
       objectReference: {fileID: 0}
+    - target: {fileID: 6693057148558462414, guid: 171d3ceff3dd58a44bbb07c371519b5e, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6874975796352852299, guid: 171d3ceff3dd58a44bbb07c371519b5e, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -81348,9 +81352,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Streetlight (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8315790579927552978, guid: 9c879b25da299ba4aab4ca15b0394d58, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9214435146890513448, guid: 9c879b25da299ba4aab4ca15b0394d58, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.096189
+      value: -15.22
       objectReference: {fileID: 0}
     - target: {fileID: 9214435146890513448, guid: 9c879b25da299ba4aab4ca15b0394d58, type: 3}
       propertyPath: m_LocalPosition.y
@@ -81358,7 +81366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9214435146890513448, guid: 9c879b25da299ba4aab4ca15b0394d58, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 55.721893
+      value: 62
       objectReference: {fileID: 0}
     - target: {fileID: 9214435146890513448, guid: 9c879b25da299ba4aab4ca15b0394d58, type: 3}
       propertyPath: m_LocalRotation.w
@@ -82388,7 +82396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9214435146890513448, guid: 9c879b25da299ba4aab4ca15b0394d58, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5759811
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 9214435146890513448, guid: 9c879b25da299ba4aab4ca15b0394d58, type: 3}
       propertyPath: m_LocalPosition.z
