@@ -13,8 +13,9 @@ public class NauseaStatusEffect : MonoBehaviour, IEffectable
     [SerializeField] private float startEffectIntensity = 30.0f;
     [SerializeField] private float finalEffectIntensity = 3.0f;
 
-    [SerializeField] private GameObject[] remedys;
-    [SerializeField] private GameObject player;
+    [SerializeField] private LayerMask remedyLayer;
+    [SerializeField] private Camera cam;
+    [SerializeField] private GameObject pickUpTooltip;
 
     private float effectIntensity;
     private float effectChangeSpeed;
@@ -81,16 +82,21 @@ public class NauseaStatusEffect : MonoBehaviour, IEffectable
         {
             effectIntensity = Mathf.MoveTowards(effectIntensity, finalEffectIntensity, growSpeed * Time.deltaTime);
 
-            
 
-            foreach (GameObject remedy in remedys)
+
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                float distanceToRemedy = Vector3.Distance(player.transform.position, remedy.transform.position);
+                Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+                Debug.DrawRay(cam.transform.position, cam.transform.forward);
 
-
-                if (distanceToRemedy < 5)
+                if (Physics.Raycast(ray, out var hit, remedyLayer))
                 {
-                    isRemedied = true;
+                    if (hit.transform.gameObject.CompareTag("Bench"))
+                    {
+                        isRemedied = true;
+
+
+                    }
                 }
             }
         }
@@ -160,4 +166,6 @@ public class NauseaStatusEffect : MonoBehaviour, IEffectable
         state = EffectState.Ending;
         Debug.Log("The nausea statusEffect-state changed to: " + state.ToString());
     }
+
+    
 }

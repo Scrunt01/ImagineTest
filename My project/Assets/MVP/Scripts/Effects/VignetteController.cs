@@ -9,8 +9,9 @@ public class VignetteController : MonoBehaviour, IEffectable
     [SerializeField] private float fadeSpeed;
     [SerializeField] private float startDelay;
 
-    [SerializeField] private GameObject[] remedys;
-    [SerializeField] private GameObject player;
+    [SerializeField] private LayerMask remedyLayer;
+    [SerializeField] private Camera cam;
+    [SerializeField] private GameObject pickUpTooltip;
 
     [SerializeField] private AudioClip effectWarning;
 
@@ -74,16 +75,23 @@ public class VignetteController : MonoBehaviour, IEffectable
                 AudioManager.Instance.PlayClip(effectWarning);
             }
 
-            foreach (GameObject remedy in remedys)
-            {
-                float distanceToRemedy = Vector3.Distance(player.transform.position, remedy.transform.position);
 
-
-                if (distanceToRemedy < 5)
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    isRemedied = true;
+                    Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+                    Debug.DrawRay(cam.transform.position, cam.transform.forward);
+
+                    if (Physics.Raycast(ray, out var hit, remedyLayer))
+                    {
+                        if (hit.transform.gameObject.CompareTag("Bench"))
+                        {
+                            isRemedied = true;
+                            
+                            
+                        }
+                    }
                 }
-            }
+            
         }
 
         if (state == EffectState.Ending)
@@ -105,5 +113,6 @@ public class VignetteController : MonoBehaviour, IEffectable
         state = EffectState.Ending;
         Debug.Log("The vignette statusEffect-state changed to: " + state.ToString());
     }
+
 
 }
