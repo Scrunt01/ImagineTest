@@ -8,6 +8,7 @@ public class OutlineOnLook : MonoBehaviour
     private void Awake()
     {
         mat = GetComponent<Renderer>().materials[indexOfMat];
+        Debug.Log("Material Index ding");
     }
 
     public void Outline(bool show)
