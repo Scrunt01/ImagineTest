@@ -18,7 +18,9 @@ public class NauseaStatusEffect : MonoBehaviour, IEffectable
     [SerializeField] private GameObject pickUpTooltip;
 
     private float effectIntensity;
-    private float effectChangeSpeed;
+
+    private float startLensDisIntensity;
+    private float startDepthOfFieldFocalLength;
 
     public bool isActive { get; private set; }
 
@@ -51,6 +53,9 @@ public class NauseaStatusEffect : MonoBehaviour, IEffectable
             Debug.Log("depth of field not found!");
             return;
         }
+
+        startDepthOfFieldFocalLength = depthOfField.focalLength.value;
+        startLensDisIntensity = lensDistortion.intensity.value;
 
         state = EffectState.NotActive;
     }
@@ -103,9 +108,13 @@ public class NauseaStatusEffect : MonoBehaviour, IEffectable
 
         if (state == EffectState.Ending)
         {
-            effectIntensity = Mathf.MoveTowards(effectIntensity, startEffectIntensity, fadeSpeed * Time.deltaTime);
+            lensDistortion.intensity.value = 
+                Mathf.MoveTowards(lensDistortion.intensity.value, startLensDisIntensity, fadeSpeed * Time.deltaTime);
 
-            if (effectIntensity == startEffectIntensity)
+            depthOfField.focalLength.value = 
+                Mathf.MoveTowards(depthOfField.focalLength.value, startDepthOfFieldFocalLength, fadeSpeed * Time.deltaTime);
+
+            if (depthOfField.focalLength.value == startDepthOfFieldFocalLength && lensDistortion.intensity.value == startLensDisIntensity)
             {
                 state = EffectState.NotActive;
                 Debug.Log("The nausea statusEffect-state changed to: " + state.ToString());
