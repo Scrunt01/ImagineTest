@@ -82203,6 +82203,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2864284762209801034, guid: dd180263e9682e04b944750cb9b2c01f, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864284762209801034, guid: dd180263e9682e04b944750cb9b2c01f, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7465870779703332606, guid: dd180263e9682e04b944750cb9b2c01f, type: 3}
       propertyPath: m_Name
       value: GameElements
