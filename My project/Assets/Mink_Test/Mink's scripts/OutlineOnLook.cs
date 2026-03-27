@@ -23,17 +23,13 @@ public class OutlineOnLook : MonoBehaviour
 
     }
 
+    
     private bool isOutlineActive;
 
     public void SetOutline(bool show)
     {
         Debug.Log(System.Convert.ToSingle(show));
         shaderMat.SetFloat("_ShowOutLine", System.Convert.ToSingle(show));
-    }
-
-    private void Start()
-    {
-        
     }
 
     private void Update()
@@ -45,6 +41,7 @@ public class OutlineOnLook : MonoBehaviour
 
             if (Physics.Raycast(ray, out var hit))
             {
+       
                 if (hit.transform.gameObject.CompareTag("Bench"))
                 {
                     IsOutlineActive = true;

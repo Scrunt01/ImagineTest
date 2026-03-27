@@ -76,21 +76,21 @@ public class VignetteController : MonoBehaviour, IEffectable
             }
 
 
-                if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+                Debug.DrawRay(cam.transform.position, cam.transform.forward);
+                
+                if (Physics.Raycast(ray, out var hit, remedyLayer))
                 {
-                    Ray ray = new Ray(cam.transform.position, cam.transform.forward);
-                    Debug.DrawRay(cam.transform.position, cam.transform.forward);
-
-                    if (Physics.Raycast(ray, out var hit, remedyLayer))
+                    if (hit.transform.gameObject.CompareTag("Bench"))
                     {
-                        if (hit.transform.gameObject.CompareTag("Bench"))
-                        {
-                            isRemedied = true;
+                        isRemedied = true;
                             
                             
-                        }
                     }
                 }
+            }
             
         }
 
