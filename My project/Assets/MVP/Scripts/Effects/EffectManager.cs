@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -20,17 +21,18 @@ public interface IEffectable
 public class EffectManager : MonoBehaviour
 {
     private IEffectable[] statusEffects;
-    private IEffectable currentEffect;
+    private List<IEffectable> currentEffects;
 
     private void Awake()
     {
+        currentEffects = new List<IEffectable>();
         statusEffects = GetComponentsInChildren<IEffectable>();
         Debug.Log($"There have been {statusEffects.Length} effects detected");
     }
 
     private void StartEffect(IEffectable effect)
     {
-        currentEffect = effect;
+        currentEffects.Add(effect);
 
         effect.StartEffect();
 
@@ -43,7 +45,7 @@ public class EffectManager : MonoBehaviour
         {
             if (effectName == effect.effectName)
             {
-                currentEffect = effect;
+                currentEffects.Add(effect);
 
                 effect.StartEffect();
 
@@ -55,16 +57,20 @@ public class EffectManager : MonoBehaviour
         void Start()
         {
             // Start the vignette effect
-            StartEffect(statusEffects[0]);
+            StartEffect("Nausea");
+            StartEffect("Vignette");
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (currentEffect.isActive && currentEffect.isRemedied)
+        foreach (var effect in currentEffects)
+        {
+            if (effect.isActive && effect.isRemedied)
             {
-                currentEffect.EndEffect();
+                effect.EndEffect();
             }
+        }
         }
     
 }

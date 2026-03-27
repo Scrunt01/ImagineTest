@@ -9,8 +9,9 @@ public class VignetteController : MonoBehaviour, IEffectable
     [SerializeField] private float fadeSpeed;
     [SerializeField] private float startDelay;
 
-    [SerializeField] private GameObject[] remedys;
-    [SerializeField] private GameObject player;
+    [SerializeField] private LayerMask remedyLayer;
+    [SerializeField] private Camera cam;
+    [SerializeField] private GameObject pickUpTooltip;
 
     [SerializeField] private AudioClip effectWarning;
 
@@ -57,7 +58,7 @@ public class VignetteController : MonoBehaviour, IEffectable
         yield return new WaitForSeconds(delay);
 
         state = EffectState.Growing;
-        Debug.Log("The vignette is growing");
+        Debug.Log("The vignette statusEffect-state changed to: " + state.ToString());
     }
 
 
@@ -73,6 +74,24 @@ public class VignetteController : MonoBehaviour, IEffectable
             {
                 AudioManager.Instance.PlayClip(effectWarning);
             }
+
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+                    Debug.DrawRay(cam.transform.position, cam.transform.forward);
+
+                    if (Physics.Raycast(ray, out var hit, remedyLayer))
+                    {
+                        if (hit.transform.gameObject.CompareTag("Bench"))
+                        {
+                            isRemedied = true;
+                            
+                            
+                        }
+                    }
+                }
+            
         }
 
         if (state == EffectState.Ending)
@@ -82,26 +101,18 @@ public class VignetteController : MonoBehaviour, IEffectable
             if (vignette.intensity.value == 0)
             {
                 state = EffectState.NotActive;
+                Debug.Log("The vignette statusEffect-state changed to: " + state.ToString());
                 StartEffect();
             }
         }
-
-        foreach (GameObject remedy in remedys)
-        {
-            float distanceToRemedy = Vector3.Distance(player.transform.position, remedy.transform.position);
-
-            if (distanceToRemedy < 5)
-            {
-                isRemedied = true;
-            }
-        }
-
     }
 
     public void EndEffect()
     {
         isActive = false;
         state = EffectState.Ending;
+        Debug.Log("The vignette statusEffect-state changed to: " + state.ToString());
     }
+
 
 }
