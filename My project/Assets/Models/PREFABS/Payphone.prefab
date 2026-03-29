@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 8268311722529172791}
   - component: {fileID: 8745353472510326355}
   - component: {fileID: 8755713665267364898}
+  - component: {fileID: 7671348958779893115}
   m_Layer: 0
   m_Name: Payphone
   m_TagString: Untagged
@@ -233,9 +234,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5561850819091044836}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.20672424, y: -0.6762138, z: -0.6762138, w: 0.20672424}
+  m_LocalRotation: {x: -0.20672628, y: -0.6762132, z: -0.6762132, w: 0.20672628}
   m_LocalPosition: {x: 20.227938, y: 0.036235657, z: -3.5218315}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 148.61, y: 148.61, z: 148.61}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8614367696616218992}
@@ -296,6 +297,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7671348958779893115
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5561850819091044836}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.014459877, y: 0.007506805, z: 0.03521793}
+  m_Center: {x: 0.0000000011618208, y: 0.0014290197, z: 0.017246628}
 --- !u!1 &7877561348443299846
 GameObject:
   m_ObjectHideFlags: 0
