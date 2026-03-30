@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -57,8 +58,8 @@ public class EffectManager : MonoBehaviour
         void Start()
         {
             // Start the vignette effect
-            StartEffect("Nausea");
-            StartEffect("Vignette");
+            // StartEffect("Nausea");
+            // StartEffect("Vignette");
         }
 
         // Update is called once per frame
@@ -71,6 +72,26 @@ public class EffectManager : MonoBehaviour
                 effect.EndEffect();
             }
         }
+
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            StartEffect("Vignette");
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            StartEffect("Nausea");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            foreach(var effect in currentEffects)
+            {
+                effect.EndEffect();
+            }
+        }
+
+    }
     
 }
