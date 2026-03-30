@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,7 +29,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DevExit();
         if (pauseMenuGO) HandlePauseMenu();
+        
     }
 
     private void HandlePauseMenu()
@@ -42,5 +46,24 @@ public class GameManager : MonoBehaviour
         {
             pauseMenu.ClosePauseMenu();
         }
+    }
+
+    
+    public void DevExit()
+    {
+        if (Input.GetKeyDown(KeyCode.F8))
+        {
+            GoToNextScene();
+        }
+    }
+
+    public void GoToNextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
