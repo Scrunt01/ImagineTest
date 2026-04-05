@@ -12221,13 +12221,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1254677455434663239, guid: dd180263e9682e04b944750cb9b2c01f, type: 3}
+      propertyPath: dialogue
+      value: What are you doing here all alone?
+      objectReference: {fileID: 0}
     - target: {fileID: 3603107222528800155, guid: dd180263e9682e04b944750cb9b2c01f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -75.9
+      value: -70.3
       objectReference: {fileID: 0}
     - target: {fileID: 3603107222528800155, guid: dd180263e9682e04b944750cb9b2c01f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 306.5
+      value: -77.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6458808783383655973, guid: dd180263e9682e04b944750cb9b2c01f, type: 3}
+      propertyPath: dialogue
+      value: FUCK OFF lil TWAT
       objectReference: {fileID: 0}
     - target: {fileID: 6591907364712509982, guid: dd180263e9682e04b944750cb9b2c01f, type: 3}
       propertyPath: effectWarning
@@ -12236,6 +12244,10 @@ PrefabInstance:
     - target: {fileID: 7465870779703332606, guid: dd180263e9682e04b944750cb9b2c01f, type: 3}
       propertyPath: m_Name
       value: GameElements
+      objectReference: {fileID: 0}
+    - target: {fileID: 8266443248038079711, guid: dd180263e9682e04b944750cb9b2c01f, type: 3}
+      propertyPath: dialogue
+      value: Your parents are in the tower?? Why would they go without you?
       objectReference: {fileID: 0}
     - target: {fileID: 9121793917533939256, guid: dd180263e9682e04b944750cb9b2c01f, type: 3}
       propertyPath: m_LocalPosition.x
