@@ -2652,6 +2652,10 @@ PrefabInstance:
       propertyPath: dialogue
       value: If you want to go to the tower take the bus!!
       objectReference: {fileID: 0}
+    - target: {fileID: 5875834194450930352, guid: 84a2c9d43f992bb4685344b09185d102, type: 3}
+      propertyPath: interactableDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6536022885858134867, guid: 84a2c9d43f992bb4685344b09185d102, type: 3}
       propertyPath: m_Name
       value: NPCPrefab 1 (1)

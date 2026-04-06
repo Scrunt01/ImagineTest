@@ -12227,11 +12227,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3603107222528800155, guid: dd180263e9682e04b944750cb9b2c01f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -70.3
+      value: -68.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603107222528800155, guid: dd180263e9682e04b944750cb9b2c01f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3603107222528800155, guid: dd180263e9682e04b944750cb9b2c01f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -77.1
+      value: -51
       objectReference: {fileID: 0}
     - target: {fileID: 6458808783383655973, guid: dd180263e9682e04b944750cb9b2c01f, type: 3}
       propertyPath: dialogue
